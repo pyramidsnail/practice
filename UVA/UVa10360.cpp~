@@ -1,0 +1,51 @@
+#include <iostream>
+#include <algorithm>
+int max(int a[], int n){
+    int max=0;
+    for(int i=0; i<n; i++){
+        if(a[i]>max)
+            max=a[i];
+    }
+    return max;
+}
+int min(int a[], int n){
+    int min=0;
+    for(int i=0; i<n; i++){
+        if(a[i]<min)
+            min=a[i];
+
+    }
+    return min;
+}
+int main()
+{
+    int sce=0;
+    std::cin >> sce;
+    for(int i=0;i<sce; i++){
+        int d=0, n=0;
+        std::cin>>d>>n;
+        int x[n], y[n], size[n];
+        int maxList[]={0,0,0};
+        for(int j=0; j<n; j++){
+            std::cin>>x[j]>>y[j]>>size[j];
+        }
+    for(int m=min(x,n); m<=max(x,n); m++){
+        for(int n=min(y,n); n<=max(y,n); n++){
+            int total = 0;
+            for(int r=0; r<n; r++){
+                if(abs(x[r]-m)<=d && abs(y[r]-n)<=d)
+                    total += size[r];
+
+            }
+            if(total>maxList[2]){
+                maxList[0]=m;
+                maxList[1]=n;
+                maxList[2]=total;
+            }
+        }
+    }
+    std::cout<<maxList[0]<<" "<<maxList[1]<<" "<<maxList[2]<<std::endl;
+    }
+
+    return 0;
+}
