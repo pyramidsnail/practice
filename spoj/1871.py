@@ -12,13 +12,13 @@ while(line!='0'):
     # people = [0]*25
     # money = [0]*25
     # people[0]=num[0]
-    money = [[float("inf") for x in xrange(25)]for x in xrange(300)]
+    money = [[float("inf") for x in xrange(300)]for x in xrange(25)]
     money[0][num[0]] = hire*num[0]+salary*num[0]
     for i in xrange(1,mon):
-        for x in xrange(min(num),max(num)):
-            for y in xrange(min(num),max(num)):
+        for x in xrange(num[i-1],max(num)+1):
+            for y in xrange(num[i],max(num)+1):
                 if y>x:
-                    money[i][y] = min(money[i][y]+,money[i-1][x] + hire*(y-x)+y*salary)
+                    money[i][y] = min(money[i][y],money[i-1][x] + hire*(y-x)+y*salary)
                 else:
                     money[i][y] = min(money[i][y],money[i-1][x] +severance*(x-y) +y*salary)
 
@@ -44,7 +44,12 @@ while(line!='0'):
             # else:
             #     people[i]=people[i-1]
             #     money[i]=keep
-                
-    print "Case %d, cost = $%d" %(case,money[mon-1])
+            
+    ans = float("inf")
+    
+    for m in  xrange(300):
+        if money[mon-1][m]<ans:
+            ans=money[mon-1][m]
+    print "Case %d, cost = $%d" %(case,ans)
     line=raw_input()
     
