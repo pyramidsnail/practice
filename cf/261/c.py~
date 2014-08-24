@@ -1,0 +1,4 @@
+from itertools import product
+
+for roll in product([1,2,3,4], repeat=2):
+    print roll
