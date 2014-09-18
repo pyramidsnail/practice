@@ -1,0 +1,7 @@
+m = int(raw_input())
+ori = raw_input()
+
+n=int(raw_input())
+dic = {}
+for i in xrange(n):
+    s1, s2 = [x for x in raw_input().split()]
