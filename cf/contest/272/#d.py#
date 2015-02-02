@@ -1,0 +1,5 @@
+from fractions import gcd
+
+n, k = map(int, raw_input().split())
+
+
